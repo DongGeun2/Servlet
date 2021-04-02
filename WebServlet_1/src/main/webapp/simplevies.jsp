@@ -9,6 +9,6 @@
 <body>
 	<h3>simpleController 에서 forward된 페이지</h3>
 	요청한 결과 출력 ${ requestScope.result } <br>
-	요청한 결과 출력 <%= request.getAttribute("result") %> <br>
+	<!-- 요청한 결과 출력 <%= request.getAttribute("result") %> <br> -->
 </body>
 </html>

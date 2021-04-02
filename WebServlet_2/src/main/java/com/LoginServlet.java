@@ -25,7 +25,9 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");
-
+		String pwd = request.getParameter("pass");
+				
+		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("<html>");
@@ -34,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 		out.print("Client 요청 방식 : " + method + "<br>");
 		if (id.equals("hong")) {
 			out.print("관리자님 방가방가 : " + id + "님");
+			out.print("비밀번호 : " + pwd);
 		} else {
 			out.print("<b>넌 누구냐 …..</b>");
 		}

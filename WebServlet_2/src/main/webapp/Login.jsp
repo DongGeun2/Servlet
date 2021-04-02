@@ -14,7 +14,9 @@
 	<h3>POST 방식 요청</h3>
 	<form action="${pageContext.request.contextPath}/Login.do" method="POST">
 		<input type="text" name="id">
+		<input type="password" name="pass">
 		<input type="submit" value="로그인">
+		
 	</form>
 	
 </body>
