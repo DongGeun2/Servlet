@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 비동기를 사용해서 (xmlHttpRequest) id 검증 
+	   /*
+         1. XMLHttpRequest 객체 얻기
+         2. onreadystatechange 이벤트 핸들러 구현 (함수)
+         3. 요청 정보 ( open() )
+         4. 요청 보내기 (send() )
+         5. 응답 처리 (Text(JSON), xml )
+            (responseText, responseXML)
+      */
+      
+      var httpReq = null;
+      var check;
+      
+      function getInstance() {
+         if(window.XMLHttpRequest) {
+            httpReq = new XMLHttpRequest();
+         } else if(window.ActiveXObject) { //IE6 이하
+            httpReq = new ActiveXObject("Msxml2.XMLHTTP");
+         } else {
+            throw new Error("AJAX 지원하지 않습니다.");
+         }
+         return httpReq;
+      }
+      
+      function handlerStateChange() {
+         if(httpReq.readyState == 4) { // 1. 서버에서 응답이 왔다면
+            if(httpReq.status >= 200 && httpReq.status < 300) {
+               
+               // 가공
+               // Text
+               // Xml
+               
+               
+              console.log(httpReq.responseText);
+              if(httpReq.responseText == "false"){
+            	  document.getElementById("messagebox").value = "";
+            	  alert("사용불가");
+              }else{
+            	  alert("사용가능");
+              }
+              
+               
+            } else {
+               alert("status Text : " + httpReq.status);
+            }
+         }
+      }
+      
+      function sendData() {
+          httpReq = getInstance();
+          httpReq.onreadystatechange = handlerStateChange;
+          
+          let chid = document.getElementById("messagebox").value;
+          console.log(chid);
+          httpReq.open("GET", "Memoid?id=" + chid); // form태그 구성이랑 같음
+          httpReq.send(); // form submit 과 같음
+       }
+      
+
+</script>
+</head>
+<body>
+<div style="margin-top:70px;"></div> 
+<!--  html 파일  action="MemoServlet"  -->
+<form name="f" action="MemoServlet" method="get"> 
+ <div align="center"> 
+    <table width="600" border="0" cellpadding="7" > 
+        <tr align="center" bgcolor="gold" height="50"> 
+            <td colspan="2"> 
+                <font size="4" color="#0033CC" face="굴림체"> 
+                <b> 
+                   Servlet Memo
+                </b> 
+                </font> 
+            </td> 
+        </tr> 
+        <tr> 
+            <td width="25%" align="center" > 
+                <b>ID</b> 
+            </td> 
+            <td> 
+                <input type="text" size="40" name="id" maxlength="10" id="messagebox"> 
+                <input type="button" value="id확인" id="message" onclick="sendData()"> 
+            </td> 
+        </tr>     
+        <tr> 
+            <td width="25%" align="center"> 
+                <b>EMAIL</b> 
+            </td> 
+            <td> 
+                <input type="text" size="40" name="email" maxlength="60" > 
+            </td> 
+        </tr> 
+        <tr> 
+            <td width="25%" align="center"> 
+                <b>MEMO</b> 
+            </td> 
+            <td> 
+                <textarea name="content" cols="50" class="box2"></textarea> 
+            </td> 
+        </tr> 
+        <tr bgcolor="gold"> 
+            <td colspan="2" align="center" class="c2"> 
+                <input type="submit" value="전송" >
+                <input type="reset" value="취소"> 
+            </td> 
+        </tr> 
+     
+    </table> 
+  
+  
+ </div>
+</form>
+<hr>
+<a href="MemoList">목록보기</a> 
+ 
+</body>
+</html>
+
+
+
+
+
+

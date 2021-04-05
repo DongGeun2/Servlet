@@ -73,7 +73,8 @@ public class Memoservlet extends HttpServlet {
      	out.print("location.href='MemoList';"); 
      	//주소창에 입력 enter (F5) 요청
      	//localhost:8090/WebServlet_3/MemoList
-    out.print("</script>");
+     	out.print("</script>");
+
    }else{ //insert 에서 현실적으로 경우 ...
 	    out.print("<script>");
 	    out.print("alert('등록실패..');");
