@@ -66,7 +66,7 @@ public class RegisterFrontController extends HttpServlet {
 			
 			String resultdata = "";
 			if(result > 0) {
-				resultdata = "welcome to bit" + dto.getId() + "님";
+				resultdata = "welcome to bit " + dto.getId() + "님";
 			}else {
 				resultdata = "Insert Fail retry";
 			}
